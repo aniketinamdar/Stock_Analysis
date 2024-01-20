@@ -34,9 +34,9 @@ trade_setup=st.selectbox(
 )
 st.write('You Selected:', trade_setup)
 
-submit1 = st.button("General information about the chart (Technical Analysis)")
+submit1 = st.button("Technical Analysis")
 
-submit2 = st.button("General information about the stock (Fundamental Analysis)")
+submit2 = st.button("Fundamental Analysis")
 
 submit3 = st.button("Give me the possible positions for the trade")
 
