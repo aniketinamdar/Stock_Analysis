@@ -45,7 +45,7 @@ You are a stock market expert. I am providing you with the {tframe} chart for {s
 """.format(tframe=time_frame, stock=stock_name, xchange=exchange,  tsetup=trade_setup)
 
 input_prompt2 = """
-You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed fundamental analysis of the chart for {tsetup} trading.. Please analyze the fundamental aspects of the stock, such as earnings, revenue, and financial ratios, and provide general information about its financial health and outlook.
+You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed fundamental analysis of the chart for {tsetup}. Please analyze the fundamental aspects of the stock, such as earnings, revenue, and financial ratios, and provide general information about its financial health and outlook.
 """.format(tframe=time_frame, stock=stock_name, xchange=exchange,  tsetup=trade_setup)
 
 input_prompt3 = """
