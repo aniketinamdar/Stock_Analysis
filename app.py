@@ -41,11 +41,11 @@ submit2 = st.button("Fundamental Analysis")
 submit3 = st.button("Give me the possible positions for the trade")
 
 input_prompt1 = """
-You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed technical analysis of the chart for {tsetup} trading. Please provide general information about the price trends, key technical indicators, and any notable patterns or support/resistance levels in the chart.
-""".format(tframe=time_frame, stock=stock_name, xchange=exchange, tsetup=trade_setup)
+You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed technical analysis of the chart. Please provide general information about the price trends, key technical indicators, and any notable patterns or support/resistance levels in the chart.
+""".format(tframe=time_frame, stock=stock_name, xchange=exchange)
 
 input_prompt2 = """
-You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed fundamental analysis of the stock for {tsetup} trading. Please analyze the fundamental aspects of the stock, such as earnings, revenue, and financial ratios, and provide general information about its financial health and outlook.
+You are a stock market expert. I am providing you with the {tframe} chart for {stock} stock listed on {xchange}. I want a detailed fundamental analysis of the stock. Please analyze the fundamental aspects of the stock, such as earnings, revenue, and financial ratios, and provide general information about its financial health and outlook.
 """.format(tframe=time_frame, stock=stock_name, xchange=exchange)
 
 input_prompt3 = """
