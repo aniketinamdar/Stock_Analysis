@@ -1,7 +1,7 @@
 import streamlit as st
 from model import *
 
-st.set_page_config(page_title="Stock Analysis")
+st.set_page_config(page_title="Stock Analysis",page_icon="🧊")
 st.header("Stock Analysis")
 
 stock_name=st.text_area("Stock Name ",key="input",placeholder="Enter stock name")
