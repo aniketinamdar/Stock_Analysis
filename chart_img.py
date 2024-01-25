@@ -1,15 +1,19 @@
 import requests
+from datetime import datetime, timedelta
 
-def download_image(url, save_path):
+def download_image(sname="HDFCBANK", exch="NSE", inter="15m", rng_from="2024-01-20T00:00:00.000Z", rng_to="2024-01-20T15:16:00.000Z"):
+    url = 'https://api.chart-img.com/v2/tradingview/advanced-chart'  # Replace with the actual URL
+    save_path = 'chart_img.png'  # Replace with your desired path
+
     try:
         headers = {"x-api-key": "n9M8bbb2Pe9b3i5oNRQiZ5ADVrXzZPWh54riYxH4"}
         payload = {
-            "symbol": "NSE:HDFCBANK",
+            "symbol": f"{exch}:{sname}",
             "range": {
-                "from": "2024-01-20T00:00:00.000Z",
-                "to": "2024-01-20T15:16:00.000Z"
+                "from": f"{rng_from}",
+                "to": f"{rng_to}"
             },
-            "interval": "15m",
+            "interval": f"{inter}",
             "timezone": "Asia/Kolkata",
             "theme": "dark",
             "studies": [
@@ -34,8 +38,7 @@ def download_image(url, save_path):
         return f"Error: {str(e)}"
 
 # Example usage
-url = 'https://api.chart-img.com/v2/tradingview/advanced-chart'  # Replace with the actual URL
-save_path = 'char_img.png'  # Replace with your desired path
 
-result = download_image(url, save_path)
-print(result)
+
+# result = download_image(url, save_path)
+# print(result)
