@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stock Analysis Tool</title>
     <link rel=stylesheet href="../css/index.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 </head>
 <body>
-    <h1>Stock Analysis Tool</h1>
-    <div id="stockForm">
-        <label for="stockSymbol">Stock Symbol:</label>
-        <input value="" id="stockSymbol" name="stockSymbol" required>
+    <header class="container">
+            <h1>Stonk Analysis</h1>
+    </header>
 
-        <label for="exchange">Exchange:</label>
-        <select id="exchange" name="exchange">
-            <option value="nse">NSE</option>
-            <option value="bse">BSE</option>
-        </select>
+    <div class="container">
+        <section>
+        <div class="grid">
+            <label for="stock">Stock Symbol
+              <input type="text" id="stock" name="stock" placeholder="HDFCBANK" required>
+            </label>
 
-        <label for="action">Action:</label>
-        <select id="action" name="action">
-            <option value="fundamental">Fundamental</option>
-            <option value="technical">Technical</option>
-            <option value="intraday">Intraday Buy/Sell</option>
-            <option value="swing">Swing Buy/Sell</option>
-        </select>
-        <button id="submitButton" value="Next" onclick="selectAnalysis()">NEXT</button>
-<!--        <input type="submit" id="submitButton" value="Next" onclick="thisfn">-->
-    </div>
+            <label for="exchange">Exchange
+            <select id="exchange" required>
+                <option value="nse" selected>NSE</option>
+                <option value="bse" >BSE</option>
+            </select>
+            </label>
 
-    <div id="results">
+        </div>
+        <label for="action">Action
+            <select id="action" required>
+                <option value="technical" selected>Technical Analysis</option>
+                <option value="intraday">Intraday Buy/Sell</option>
+                <option value="swing">Swing Buy/Sell</option>
+            </select>
+        </label>
+        <button id="nextButton" value="next" onclick="selectAnalysis()">Next</button>
+        </section>
+        <div class="container" id="results">
         <!-- Results will be displayed here -->
+        </div>
+        <section></section>
+        <div class="container" id="results">
+         <p>
+             We are not SEBI registered advisors. All views shared are only for educational purposes. Kindly consult your investment advisor before making any decisions.
+         </p>
+        </div>
     </div>
+
     <script src="../js/index.js"></script>
-    <!-- Include JavaScript for interactivity -->
 </body>
 </html>
