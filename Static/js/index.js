@@ -1,7 +1,8 @@
 
-document.getElementById('stockForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
+function selectAnalysis()
+{
+    // e.preventDefault();
+    // alert("NIGGA")
     var stockSymbol = document.getElementById('stockSymbol').value;
     var exchange = document.getElementById('exchange').value;
     var action = document.getElementById('action').value;
@@ -22,15 +23,16 @@ document.getElementById('stockForm').addEventListener('submit', function(e) {
             displaySwingForm(resultsDiv);
             break;
     }
-});
+};
 
 function displayFundamentalAnalysis(container) {
-    container.innerHTML = '<p>NIGGANIGGA</p>';
+    container.innerHTML = '<p>[Display 2-3 paragraphs of technical analysis text here]</p>';
+
 }
 
 function displayTechnicalAnalysisForm(container) {
     container.innerHTML = `
-        <form id="technicalForm">
+        <div id="technicalForm">
             <label for="chartImage">Upload Chart Image:</label>
             <input type="file" id="chartImage" name="chartImage" required>
 
@@ -43,7 +45,7 @@ function displayTechnicalAnalysisForm(container) {
             </select>
 
             <input type="submit" value="Analyze Chart">
-        </form>
+        </div>
         <div id="technicalResults"></div>
     `;
 

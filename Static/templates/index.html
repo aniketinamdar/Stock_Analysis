@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Stock Analysis Tool</title>
     <link rel=stylesheet href="../css/index.css">
-    <script src="../js/index.js"></script>
+
 </head>
 <body>
     <h1>Stock Analysis Tool</h1>
-    <form id="stockForm">
+    <div id="stockForm">
         <label for="stockSymbol">Stock Symbol:</label>
-        <input type="text" id="stockSymbol" name="stockSymbol" required>
+        <input value="" id="stockSymbol" name="stockSymbol" required>
 
         <label for="exchange">Exchange:</label>
         <select id="exchange" name="exchange">
@@ -25,14 +25,14 @@
             <option value="intraday">Intraday Buy/Sell</option>
             <option value="swing">Swing Buy/Sell</option>
         </select>
-
-        <input type="submit" value="Next">
-    </form>
+        <button id="submitButton" value="Next" onclick="selectAnalysis()">NEXT</button>
+<!--        <input type="submit" id="submitButton" value="Next" onclick="thisfn">-->
+    </div>
 
     <div id="results">
         <!-- Results will be displayed here -->
     </div>
-
+    <script src="../js/index.js"></script>
     <!-- Include JavaScript for interactivity -->
 </body>
 </html>
