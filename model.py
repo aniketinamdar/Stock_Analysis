@@ -30,7 +30,7 @@ def get_intraday_prompt(stock_name, exchange):
 	return intraday_prompt
 
 def get_swing_prompt(stock_name, exchange):
-	swing_prompt = f"Act as a stock market expert and perform technical analysis on the company {stock_name} listed on {exchange}. Use the 1 day and 1 week candlestick charts provided below for the analysis. Perform an in-depth technical analysis focusing on single and multiple candlestick patterns, volume, and support - resistance levels. Using the analysis, decide whether to take a long position as a swing trader. For the chosen position, return entry price, stop-loss, target 1 and target 2. While calculating the position, keep the minimum risk reward ratio (risk reward ratio = potential loss / potential profit) above 1. If no suitable position can be found above minimum risk reward ratio, convey the same to the user."
+	swing_prompt = f"Act as a stock market expert and perform technical analysis on the company {stock_name} listed on {exchange}. Use the 1 day and 1 week candlestick charts provided below for the analysis. Perform an in-depth technical analysis focusing on single and multiple candlestick patterns, volume, and support - resistance levels. Using the analysis, decide whether to take a long position or a short position as a swing trader. For the chosen position, return entry price, stop-loss, target 1 and target 2. While calculating the position, keep the minimum risk reward ratio (risk reward ratio = potential loss / potential profit) above 1. If no suitable position can be found above minimum risk reward ratio, convey the same to the user."
 
 	return swing_prompt
 
