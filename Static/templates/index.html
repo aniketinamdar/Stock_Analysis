@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Analysis Tool</title>
+    <link rel=stylesheet href="../css/index.css">
+    <script src="../js/index.js"></script>
+</head>
+<body>
+    <h1>Stock Analysis Tool</h1>
+    <form id="stockForm">
+        <label for="stockSymbol">Stock Symbol:</label>
+        <input type="text" id="stockSymbol" name="stockSymbol" required>
+
+        <label for="exchange">Exchange:</label>
+        <select id="exchange" name="exchange">
+            <option value="nse">NSE</option>
+            <option value="bse">BSE</option>
+        </select>
+
+        <label for="action">Action:</label>
+        <select id="action" name="action">
+            <option value="fundamental">Fundamental</option>
+            <option value="technical">Technical</option>
+            <option value="intraday">Intraday Buy/Sell</option>
+            <option value="swing">Swing Buy/Sell</option>
+        </select>
+
+        <input type="submit" value="Next">
+    </form>
+
+    <div id="results">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <!-- Include JavaScript for interactivity -->
+</body>
+</html>
