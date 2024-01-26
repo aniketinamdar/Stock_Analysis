@@ -1,11 +1,14 @@
 import requests
+import io
 from datetime import datetime, timedelta
 
-def download_image(sname="HDFCBANK", exch="NSE", inter="15m", rng_from="2024-01-20T00:00:00.000Z", rng_to="2024-01-20T15:16:00.000Z"):
-    url = 'https://api.chart-img.com/v2/tradingview/advanced-chart'  # Replace with the actual URL
-    save_path = 'chart_img.png'  # Replace with your desired path
-
+def download_image(
+    sname="HDFCBANK", exch="NSE", inter="15m",
+    rng_from="2024-01-20T00:00:00.000Z",
+    rng_to="2024-01-20T15:16:00.000Z"
+):
     try:
+        url = "https://api.chart-img.com/v2/tradingview/advanced-chart"
         headers = {"x-api-key": "n9M8bbb2Pe9b3i5oNRQiZ5ADVrXzZPWh54riYxH4"}
         payload = {
             "symbol": f"{exch}:{sname}",
@@ -27,15 +30,20 @@ def download_image(sname="HDFCBANK", exch="NSE", inter="15m", rng_from="2024-01-
         if response.status_code == 200:
             # Check if the response is an image
             if 'image' in response.headers['Content-Type']:
-                with open(save_path, 'wb') as file:
-                    file.write(response.content)
-                return f"Image successfully saved to {save_path}"
+                # with open(save_path, 'wb') as file:
+                #     file.write(response.content)
+                # return f"Image successfully saved to {save_path}"
+                print("response type", type(response.content))
+                return io.BytesIO(response.content)
             else:
-                return "Error: The URL does not point to an image"
+                print(response.content)
+                return None
         else:
-            return f"Error: Received response status code {response.status_code}"
+            print(response.status_code, response.content)
+            return None
     except requests.exceptions.RequestException as e:
-        return f"Error: {str(e)}"
+        print(e)
+        return None
 
 # Example usage
 

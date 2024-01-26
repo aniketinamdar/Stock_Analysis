@@ -45,3 +45,10 @@ def get_gemini_intraday_or_swing_response(api_file_1, api_file_2, prompt):
 	image_2 = Image.open(io.BytesIO(file_contents_2))
 	response = model.generate_content([image_1, image_2, prompt])
 	return response.text
+
+def get_positions_gemini(img_byte_obj1, img_byte_obj2, prompt):
+	model = genai.GenerativeModel('gemini-pro-vision')
+	image_1 = Image.open(img_byte_obj1)
+	image_2 = Image.open(img_byte_obj2)
+	response = model.generate_content([image_1, image_2, prompt])
+	return response.text
