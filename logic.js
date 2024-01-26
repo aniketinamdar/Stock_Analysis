@@ -9,6 +9,9 @@ function selectAnalysis()
     resultsDiv.innerHTML = ''; // Clear previous results
 
     switch(action) {
+        case 'fundamental':
+            displayFundamentalAnalysisForm(resultsDiv);
+            break;
         case 'technical':
             displayTechnicalAnalysisForm(resultsDiv);
             break;
@@ -19,6 +22,12 @@ function selectAnalysis()
             displaySwingForm(resultsDiv);
             break;
     }
+};
+
+function displayFundamentalAnalysisForm(container){
+    container.innerHTML =`
+    <div>[Display 4 paragraphs of fundamental analysis text here]</div>
+    `;
 };
 
 function technical_analysis() {
@@ -61,12 +70,12 @@ function displayTechnicalAnalysisForm(container) {
 
 function displayIntradayForm(container) {
     container.innerHTML = `
-        <div>[Display intraday entry stoploss targets risk reward ratio]</div>
+        <div>[Display intraday entry stop loss targets risk reward ratio]</div>
         `;
 }
 
 function displaySwingForm(container) {
     container.innerHTML = `
-        <div>[Display swing entry stoploss targets risk reward ratio]</div>
+        <div>[Display swing entry stop loss targets risk reward ratio]</div>
         `;
 }
