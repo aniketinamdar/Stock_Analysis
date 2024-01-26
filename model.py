@@ -11,6 +11,10 @@ import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
+def get_fundamental_prompt(stock_name, exchange):
+	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchange}. Assess the company's financial health by analyzing its most recent balance sheet, income statement, and cash flow statement. Evaluate its management effectiveness, competitive position in the industry, and future growth prospects. Provide insights into the company's valuation metrics like P/E ratio, P/B ratio, EPS, dividend yield, market cap, and shares float. Return the analysis in four paragraphs, each containing 80-100 words. "
+	return fundamental_prompt
+
 def get_technical_prompt(time_frame, stock_name, exchange):
 	technical_prompt = f"Act as a stock market expert and perform technical analysis on the company {stock_name} listed on {exchange}. Use the {time_frame} candlestick chart provided below for the analysis. Perform an in-depth technical analysis focusing on single and multiple candlestick patterns, volume, and support - resistance levels. Return the analysis in 3 paragraphs of 80-100 words each."
 	return technical_prompt
@@ -23,10 +27,21 @@ def get_swing_prompt(stock_name, exchange):
 	swing_prompt = f"Act as a stock market expert and perform technical analysis on the company {stock_name} listed on {exchange}. Use the 1 day and 1 week candlestick charts provided below for the analysis. Perform an in-depth technical analysis focusing on single and multiple candlestick patterns, volume, and support - resistance levels. Using the analysis, decide whether to take a long position or a short position as a swing trader. For the chosen position, return entry price, stop-loss, target 1 and target 2. While calculating the position, keep the minimum risk reward ratio (risk reward ratio = potential loss / potential profit) above 1. If no suitable position can be found above minimum risk reward ratio, convey the same to the user."
 	return swing_prompt
 
-#gemini response function to be edited
-def get_gemini_response(uploaded_file, prompt):
+
+# use this function for technical analysis
+def get_gemini_ta_response(user_uploaded_chart, prompt):
 	model = genai.GenerativeModel('gemini-pro-vision')
-	file_contents = uploaded_file.read()
+	file_contents = user_uploaded_chart.read()
 	image = Image.open(io.BytesIO(file_contents))
 	response = model.generate_content([image, prompt])
+	return response.text
+
+# use this function for intraday or swing
+def get_gemini_intraday_or_swing_response(api_file_1, api_file_2, prompt):
+	model = genai.GenerativeModel('gemini-pro-vision')
+	file_contents_1 = api_file_1.read()
+	image_1 = Image.open(io.BytesIO(file_contents_1))
+	file_contents_2 = api_file_2.read()
+	image_2 = Image.open(io.BytesIO(file_contents_2))
+	response = model.generate_content([image_1, image_2, prompt])
 	return response.text
