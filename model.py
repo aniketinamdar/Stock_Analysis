@@ -12,7 +12,7 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_fundamental_prompt(stock_name, exchange, prompt_data):
-	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchang}. Only provide insights into the company's metrics: {prompt_data}. Return the analysis in three paragraphs, each containing 80-100 words. Output Language: English."
+	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchange}. Only provide insights into the company's metrics: {prompt_data}. Return the analysis in three paragraphs, each containing 80-100 words. Output Language: English."
 	return fundamental_prompt
 
 def get_technical_prompt(time_frame, stock_name, exchange):
