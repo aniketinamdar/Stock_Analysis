@@ -53,6 +53,6 @@ def get_positions_gemini(img_byte_obj1, img_byte_obj2, prompt):
 	return response.text
 
 def get_gemini_fundamental_response(prompt):
-	model = genai.GenerativeModel('gemini-pro-vision')
+	model = genai.GenerativeModel('gemini-pro')
 	response = model.generate_content(prompt)
 	return response.text

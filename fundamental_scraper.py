@@ -31,9 +31,11 @@ def fundamental_scraper(stock_symbol):
             prompt_data += " " + k + " " + v + "."
             # return p.get_text(strip=True), data
         # print(output)
+        print(scraper_data)
+        print()
+        print(prompt_data)
         return scraper_data, prompt_data
     else:
         print("Failed to retrieve the webpage")
 
-# fundamental_scraper("HDFCBANK")
 

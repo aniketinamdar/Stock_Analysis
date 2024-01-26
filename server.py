@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 from chart_img import *
 from model import *
+from fundamental_scraper import *
 import pytz
 
 app = Flask(__name__)
@@ -59,6 +60,17 @@ default_values = {
 @app.route('/')
 def home():
     return 'Backend server running'
+
+
+@app.route('/fundamental', methods=['GET'])
+def get_fundamental():
+    print(request.args)
+    stock_name = request.args.get('stk')
+    exchange = request.args.get('exc')
+    scraper_data, prompt_data = fundamental_scraper(stock_name)
+    prompt = get_fundamental_prompt(stock_name, exchange, prompt_data)
+    resp = get_gemini_fundamental_response(prompt)
+    return scraper_data + "\n\n" + resp
 
 
 @app.route('/technical', methods=['POST'])
