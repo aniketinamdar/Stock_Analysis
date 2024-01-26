@@ -9,6 +9,7 @@ from PIL import Image
 import pdf2image
 import google.generativeai as genai
 
+
 genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 def get_fundamental_prompt(stock_name, exchange, prompt_data):
