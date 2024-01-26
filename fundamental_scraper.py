@@ -1,16 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
 
-def fundamental_scraper(stock_ticker):
-    output =""
-    url = f'https://www.screener.in/company/{stock_ticker}/consolidated/'
+# returns scraper_data, prompt_data 2 strings
+def fundamental_scraper(stock_symbol):
+    scraper_data =""
+    prompt_data = ""
+    url = f'https://www.screener.in/company/{stock_symbol}/'
     response = requests.get(url)
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
         about = soup.find('div', class_='about')
         paragraphs = about.find_all('p') if about else []
         for p in paragraphs:
-            output += " " + p.get_text(strip=True)
+            scraper_data += " " + p.get_text(strip=True)
         # p = about.find('p')
         # print(p.get_text(strip=True))
         ratios = soup.find('div', class_='company-ratios')
@@ -26,14 +28,12 @@ def fundamental_scraper(stock_ticker):
         data = {k: v.replace('Cr.', 'Cr').strip() for k, v in data.items()}
         # print(output)
         for k,v in data.items():
-            output += " " + k + " " + v + "."
+            prompt_data += " " + k + " " + v + "."
             # return p.get_text(strip=True), data
         # print(output)
-        return output
+        return scraper_data, prompt_data
     else:
         print("Failed to retrieve the webpage")
 
-
-x = fundamental_scraper("HDFCBANK")
-print(x)
+# fundamental_scraper("HDFCBANK")
 
