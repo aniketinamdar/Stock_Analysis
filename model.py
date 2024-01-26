@@ -9,7 +9,7 @@ from PIL import Image
 import pdf2image
 import google.generativeai as genai
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
 
 def get_fundamental_prompt(stock_name, exchange, prompt_data):
 	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchange}. Only provide insights into the company's metrics: {prompt_data}. Return the analysis in three paragraphs, each containing 80-100 words. Output Language: English."

@@ -1,6 +1,7 @@
 import requests
 import io
 from datetime import datetime, timedelta
+import os
 
 def download_image(
     sname="HDFCBANK", exch="NSE", inter="15m",
@@ -10,7 +11,7 @@ def download_image(
 ):
     try:
         url = "https://api.chart-img.com/v2/tradingview/advanced-chart"
-        headers = {"x-api-key": "n9M8bbb2Pe9b3i5oNRQiZ5ADVrXzZPWh54riYxH4"}
+        headers = {"x-api-key": os.environ['x-api-key']}
         payload = {
             "symbol": f"{exch}:{sname}",
             "range": {
