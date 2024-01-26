@@ -5,7 +5,8 @@ from datetime import datetime, timedelta
 def download_image(
     sname="HDFCBANK", exch="NSE", inter="15m",
     rng_from="2024-01-20T00:00:00.000Z",
-    rng_to="2024-01-20T15:16:00.000Z"
+    rng_to="2024-01-20T15:16:00.000Z",
+    save_path="chart_img.png"
 ):
     try:
         url = "https://api.chart-img.com/v2/tradingview/advanced-chart"
@@ -30,8 +31,8 @@ def download_image(
         if response.status_code == 200:
             # Check if the response is an image
             if 'image' in response.headers['Content-Type']:
-                # with open(save_path, 'wb') as file:
-                #     file.write(response.content)
+                with open(save_path, 'wb') as file:
+                    file.write(response.content)
                 # return f"Image successfully saved to {save_path}"
                 print("response type", type(response.content))
                 return io.BytesIO(response.content)
