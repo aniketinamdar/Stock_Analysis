@@ -12,7 +12,7 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_fundamental_prompt(stock_name, exchange):
-	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchange}. Assess the company's financial health by analyzing its most recent balance sheet, income statement, and cash flow statement. Evaluate its management effectiveness, competitive position in the industry, and future growth prospects. Provide insights into the company's valuation metrics like P/E ratio, P/B ratio, EPS, dividend yield, market cap, and shares float. Return the analysis in four paragraphs, each containing 80-100 words. "
+	fundamental_prompt = f"Act as a stock market expert and perform fundamental analysis on the company {stock_name} listed on {exchange}. Assess the company's financial health by analyzing its most recent balance sheet, income statement, and cash flow statement. Evaluate its management effectiveness, competitive position in the industry, and future growth prospects. Provide insights into the company's valuation metrics like P/E ratio, P/B ratio, EPS, dividend yield, market cap, and shares float. Return the analysis in four paragraphs, each containing 80-100 words, language: english."
 	return fundamental_prompt
 
 def get_technical_prompt(time_frame, stock_name, exchange):
