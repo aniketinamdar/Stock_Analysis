@@ -3,3 +3,8 @@ google-generativeai
 python-dotenv
 flask
 bs4
+flask_cors
+waitress
+pytz
+requests
+pillow
